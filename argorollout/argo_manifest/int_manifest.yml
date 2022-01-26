@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollouts-example
+spec:
+  selector:
+    matchLabels:
+      app: rollouts-example
+  template:
+    metadata:
+      labels:
+        app: rollouts-example
+    spec:
+      containers:
+      - name: rollouts-demo
+        image: argoproj/rollouts-demo:blue
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+  strategy:
+    canary:
+      steps:
+      - setWeight: 25
+      - pause: {duration: 5s}
+      - setWeight: 50
+      - pause: {duration: 5s}
+      - setWeight: 75
+      - pause: {duration: 5s}
+      - setWeight: 100
