@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/GreenOpsInc/atlasexamples.git
     targetRevision: main
-    path: argorollout/argo_manifest/int_manifest.yml
+    path: argorollout/argo_manifest/int
   destination:
     server: https://kubernetes.default.svc
     namespace: int
