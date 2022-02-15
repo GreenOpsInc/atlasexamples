@@ -6,6 +6,7 @@ do
    echo $SERVICE_INTERNAL_URL
    resp=$(curl $SERVICE_INTERNAL_URL:5000/)
    if [ "$resp" != "Hello, World!" ]; then
+      echo "$resp"
       echo "Did not return correctly."
       exit 1;
    fi
