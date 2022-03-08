@@ -15,7 +15,8 @@ steps:
     commands: [sh, -c, ./verifyendpoints.sh]
     before: false
     variables:
-      SERVICE_INTERNAL_URL: testapp.dev.svc.cluster.local
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.dev.svc.cluster.local
 - name: deploy_to_int1
   application_path: testapp_int1.yml
   tests:
@@ -25,7 +26,8 @@ steps:
     commands: [sh, -c, ./verifyendpoints.sh]
     before: false
     variables:
-      SERVICE_INTERNAL_URL: testapp.int.svc.cluster.local
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.int.svc.cluster.local
   dependencies:
   - deploy_to_dev
 - name: deploy_to_int2
@@ -37,7 +39,8 @@ steps:
     commands: [sh, -c, ./verifyendpoints.sh]
     before: false
     variables:
-      SERVICE_INTERNAL_URL: testapp.int.svc.cluster.local
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.int.svc.cluster.local
   dependencies:
   - deploy_to_dev
 - name: deploy_to_int3
@@ -49,7 +52,8 @@ steps:
     commands: [sh, -c, ./verifyendpoints.sh]
     before: false
     variables:
-      SERVICE_INTERNAL_URL: testapp.int.svc.cluster.local
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.int.svc.cluster.local
   dependencies:
   - deploy_to_dev
 - name: deploy_to_staging
@@ -61,7 +65,8 @@ steps:
     commands: [sh, -c, ./verifyendpoints.sh]
     before: false
     variables:
-      SERVICE_INTERNAL_URL: testapp.int.svc.cluster.local
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.int.svc.cluster.local
   dependencies:
   - deploy_to_int1
   - deploy_to_int2
