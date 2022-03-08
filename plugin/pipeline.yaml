@@ -18,7 +18,8 @@ steps:
     commands: [python, verify.py]
     before: false
     variables:
-      SERVICE_INTERNAL_URL: testapp.dev1.svc.cluster.local
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.dev1.svc.cluster.local
 - name: deploy_to_dev2
   application_path: testapp_dev2.yml
   tests:
@@ -28,7 +29,8 @@ steps:
     commands: [python, verify.py]
     before: false
     variables:
-      SERVICE_INTERNAL_URL: testapp.dev2.svc.cluster.local
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.dev2.svc.cluster.local
 - name: deploy_to_int
   application_path: testapp_int2.yml
   tests:
@@ -38,7 +40,8 @@ steps:
     commands: [sh, -c, ./verifyendpoints.sh]
     before: false
     variables:
-      SERVICE_INTERNAL_URL: testapp.int.svc.cluster.local
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.int.svc.cluster.local
   dependencies:
   - deploy_to_dev1
   - deploy_to_dev2
